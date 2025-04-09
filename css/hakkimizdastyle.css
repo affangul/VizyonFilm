@@ -1,0 +1,23 @@
+body{
+    background-color: #F0EADA;
+}
+h1{
+    color: black;
+    place-self: center;
+    margin-bottom: 2%;
+    font-size: 40px;
+    font-weight: 900;
+}
+main p {
+    color: rgb(55, 55, 55);
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.hakkımızdaResim{
+    width: 500px;
+    place-self: center;
+}
+.hakkımızdaResim img{
+    width: 100%;
+    
+}

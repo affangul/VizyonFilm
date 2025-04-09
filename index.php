@@ -9,8 +9,9 @@
 </head>
 <body>
   <header>
-    <h1>Vizyon Film</h1>
+  <a href="index.php" class="headLogo"><img src="img/logo1.png" ></a>
     <nav>
+      
       <a href="index.php">Ana Sayfa</a>
       <a href="filmler.php">Filmler</a>
       <a href="hakkımızda.php">Hakkımızda</a>

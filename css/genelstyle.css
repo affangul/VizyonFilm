@@ -11,24 +11,46 @@
   }
   
   header {
+    all: unset;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 200px;
     background-color: #000000;
     padding: 20px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    
+  }
+  .headLogo {
+    flex: 1;
+    height: 200px;
   }
   
-  header h1 {
-    color: #ffcc00;
+  .headLogo img {
+    width: 90%;
+    height: 100%;
   }
   
   header nav {
-    margin-top: 10px;
+    margin-left: 10%;
+    flex: 2;
+    height: 100%;
+    align-items: center;
+    place-self: center;
+    align-self: center;
+    gap: 40px;
+    display: flex;
+    justify-items: right;
   }
   
   nav a {
     color: white;
-    margin: 0 15px;
     text-decoration: none;
     font-weight: bold;
+    font-size: larger;
+    
   }
   
   nav a:hover {
@@ -44,12 +66,18 @@
     text-align: center;
     padding: 15px;
     margin-top: 40px;
-
+    
   }
   footer nav{
+    display: flex;
     margin-bottom: 40px;
     text-align: center;
+    align-self: center;
+    gap: 40px;
   }
   footer p{
     text-align: center;
+    color: white;
   }
+
+  

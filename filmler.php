@@ -4,13 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Filmler</title>
-  <link rel="stylesheet" href="css/filmlerstyle.css">
   <link rel="stylesheet" href="css/genelstyle.css">
+  <link rel="stylesheet" href="css/filmlerstyle.css">
 </head>
 <body>
-  <header>
-    <h1>Vizyon Film</h1>
+<header>
+  <a href="index.php" class="headLogo"><img src="img/logo1.png" ></a>
     <nav>
+      
       <a href="index.php">Ana Sayfa</a>
       <a href="filmler.php">Filmler</a>
       <a href="hakkımızda.php">Hakkımızda</a>
@@ -86,10 +87,12 @@
 </div>
 <div class="kategori">
 <a href="">Aksiyon</a>
+<a href="">Aile</a>
+<a href="">Bilim Kurgu</a>
+<a href="">Biyografi</a>
 <a href="">Komedi</a>
 <a href="">Dram</a>
 <a href="">Korku</a>
-<a href="">Bilim Kurgu</a>
 <a href="">Romantik</a>
 <a href="">Macera</a>
 <a href="">Gerilim</a>
@@ -99,7 +102,8 @@
 <a href="">Tarih</a>
 <a href="">Fantezi</a>
 <a href="">Müzikal</a>
-<a href="">Biyografi</a>
+
+
 </div>
 </main>
   <footer>
