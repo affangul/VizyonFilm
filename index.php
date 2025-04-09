@@ -22,34 +22,43 @@
   <article class="film">
   <div class="film-icerik">
     <div class="film-sol">
-      <h2>Daredevil: Born Again</h2>
-      <img src="img/daredevil.jpg">
+      <h2>Şahit</h2>
+      <img src="img/witness.png">
       
     </div>
     <div class="film-sag">
-      <div class="puan"><strong>Vizyon Film:</strong> 8.5 / 10</div>
-      <div class="puan"><strong>IMDb Puanı:</strong> 7.9 / 10</div>
+      <div class="puanVizyon"><strong>Vizyon Film:</strong> 7.5 / 10</div>
+      <div class="puanIMDb"><strong>IMDb:</strong> 7.2/ 10</div>
+      <div class ="ekBilgi"><strong>Yönetmen: Nader Saeivar</strong></div>
+      <div class ="ekBilgi"><strong>Senarist: Nader Saeivar, Jafar Panahi</strong></div>
+      <div class ="ekBilgi"><strong>Tür:  Dram</strong></div>
+      <div class ="ekBilgi"><strong>Film Süresi: 1s 40dk</strong></div>
     </div>
     
   </div>
-  <p class="film-aciklama">Matt Murdock, çocukken radyoaktif bir maddeyle kaza geçirerek kör olmuş bir avukattır. Görme yetisini kaybetmiş olmasına rağmen, diğer duyuları diğer insanların hayal bile edemeyeceği seviyelere ulaşmıştır. Matt, gündüzleri Nelson & Murdock ofisinde bir avukatken, geceleri New York'taki Hell's Kitchen'da kanunsuz Daredevil olarak faaliyet gösterir.</p>
+  <p class="film-aciklama">Şahit, arkadaşının kocası tarafından katledilmesine şahit olan bir kadının hikayesini konu ediyor. Tarlan, arkadaşı Rana'nın üst düzey bir devlet memuru olan kocası tarafından nasıl öldürüldüğüne istemeden de olsa tanık olur. Polis olayı ciddi bir şekilde soruşturmayı reddedince Tarlan riskli bir karar verir ve kamuoyunu bilgilendirmek ister. Ancak bu karar sadece ailesini değil aynı zamanda kendi hayatını da büyük tehlikeye atar.</p>
   <a href="#" class="incele-btn">Daha fazlası...</a>  
 </article>
 
 <article class="film">
   <div class="film-icerik">
     <div class="film-sol">
-      <h2>The Pitt</h2>
-      <img src="img/thePitt.jpg">
+      <h2>Bataklık</h2>
+      <img src="img/bataklık.jpg">
       
     </div>
     <div class="film-sag">
-      <div class="puan"><strong>Vizyon Film:</strong> 8.5 / 10</div>
-      <div class="puan"><strong>IMDb Puanı:</strong> 7.9 / 10</div>
+      <div class="puanVizyon"><strong>Vizyon Film:</strong> 4.1 / 10</div>
+      <div class="puanIMDb"><strong>IMDb:</strong> 4.3/ 10</div>
+      <div class ="ekBilgi"><strong>Yönetmen:  Taneli Mustonen, Brad Watson, Brad Watson</strong></div>
+      <div class ="ekBilgi"><strong>Senarist: Gavin Mehrtens</strong></div>
+      <div class ="ekBilgi"><strong>Tür:  Korku, Gerilim</strong></div>
+      <div class ="ekBilgi"><strong>Film Süresi: 1s 27dk</strong></div>
+
     </div>
     
   </div>
-  <p class="film-aciklama">The Pitt, günümüz Amerika'sındaki sağlık çalışanlarının karşılaştığı zorlukların, Pensilvanya, Pittsburgh'daki modern bir hastanede çalışan ön cephe kahramanlarının merceğinden görüldüğü bir incelemesidir.</p>
+  <p class="film-aciklama">Bataklık, Louisiana Bayou'da korkunç bir yırtıcı tarafından kovalanan bir grup arkadaşın hikayesini konu ediyor. Ölen ablasının küllerini götürmek için yola çıkan Kyle, talihsiz bir kazanın kurbanı olur. Kyle’ın bindiği uçak, Louisiana'nın ünlü Bayou bataklığında ıssız bir noktaya düşer. Yolcular başlarına gelen bu olayın yaşayabilecekleri en büyük felaket olduğunu düşünürler. Ancak  Amerikan timsahlarının atası olan, doğal yaşam alanlarına mükemmel uyum sağlayan bir sürü peşlerine düştüğün kendilerini daha büyük bir felaketin içinde bulurlar. </p>
   <a href="#" class="incele-btn">Daha fazlası...</a>  
 </article>
 
@@ -61,8 +70,12 @@
       
     </div>
     <div class="film-sag">
-      <div class="puan"><strong>Vizyon Film:</strong> 8.5 / 10</div>
-      <div class="puan"><strong>IMDb Puanı:</strong> 7.9 / 10</div>
+      <div class="puanVizyon"><strong>Vizyon Film:</strong> 5.0 / 10</div>
+      <div class="puanIMDb"><strong>IMDb:</strong> 6.0 / 10</div>
+      <div class ="ekBilgi"><strong>Yönetmen: Jared Hess</strong></div>
+      <div class ="ekBilgi"><strong>Senarist: Peter Sollett, Allison Schroeder</strong></div>
+      <div class ="ekBilgi"><strong>Tür:  Macera, Komedi, Aile</strong></div>
+      <div class ="ekBilgi"><strong>Film Süresi: 1s 41dk</strong></div>
     </div>
     
   </div>
