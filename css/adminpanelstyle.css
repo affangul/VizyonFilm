@@ -1,0 +1,76 @@
+.logo {
+    margin-left: 12px;
+    justify-content: center;
+    place-self: center;
+    width: 300px;
+
+}
+
+.logo img {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+}
+.kutular
+{
+    place-self: center;
+    display: flex;
+    width: 80%;
+    margin-left: 9%;
+    margin-right: 9%;
+}
+.a1{
+    margin-top: 0;
+    flex: 1;
+}
+.a2{
+    margin-top: 0;
+    flex: 1;
+    margin-left: 5%;
+}
+
+.kutu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+    background-color: #fff;
+}
+.kutu:hover{
+    background-color: #cacaca;
+    cursor:pointer;
+}
+a{
+    width: 100%;
+    all: unset;
+    text-decoration: none;
+}
+a:hover{
+    all: unset;
+    cursor:pointer;
+}
+.çıkış{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #7c0000;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+    background-color: #ff0000;
+    color: white;
+}
+.çıkış:hover{
+    background-color: #7c0000;
+    border: 1px solid #ff0000;
+
+}

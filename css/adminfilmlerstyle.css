@@ -1,0 +1,23 @@
+.düzenle{
+    color: blue;
+}
+.düzenle:hover{
+    color: rgb(78, 78, 255);
+}
+.menu{
+    flex: 1;
+}
+.filmekle{
+    flex: 1;
+    display: block;
+    display: flex;
+    flex-direction:row-reverse;
+}
+.filmekle a{
+    margin-top: 10px;
+    margin-right: 40px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: rgb(19, 202, 19);
+    color: white;
+}
