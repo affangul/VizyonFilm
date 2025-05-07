@@ -109,4 +109,9 @@
     background-color: #e6b800;
   }
   
+  .kategori a.aktif {
+    font-weight: bold;
+    text-decoration: underline;
+    color: red;
+  }
   

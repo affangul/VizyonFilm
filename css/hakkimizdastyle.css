@@ -8,10 +8,14 @@ h1{
     font-size: 40px;
     font-weight: 900;
 }
+main {
+    margin: 5%;
+}
 main p {
     color: rgb(55, 55, 55);
     font-size: 24px;
     margin-bottom: 20px;
+
 }
 .hakkımızdaResim{
     width: 500px;

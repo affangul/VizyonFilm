@@ -1,3 +1,10 @@
+<?php
+ include("admin/bağlan.php");
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -20,69 +27,54 @@
   </header>
 
   <main>
-  <article class="film">
-  <div class="film-icerik">
-    <div class="film-sol">
-      <h2>Şahit</h2>
-      <img src="img/witness.png">
-      
-    </div>
-    <div class="film-sag">
-      <div class="puanVizyon"><strong>Vizyon Film:</strong> 7.5 / 10</div>
-      <div class="puanIMDb"><strong>IMDb:</strong> 7.2/ 10</div>
-      <div class ="ekBilgi"><strong>Yönetmen: Nader Saeivar</strong></div>
-      <div class ="ekBilgi"><strong>Senarist: Nader Saeivar, Jafar Panahi</strong></div>
-      <div class ="ekBilgi"><strong>Tür:  Dram</strong></div>
-      <div class ="ekBilgi"><strong>Film Süresi: 1s 40dk</strong></div>
-    </div>
-    
-  </div>
-  <p class="film-aciklama">Şahit, arkadaşının kocası tarafından katledilmesine şahit olan bir kadının hikayesini konu ediyor. Tarlan, arkadaşı Rana'nın üst düzey bir devlet memuru olan kocası tarafından nasıl öldürüldüğüne istemeden de olsa tanık olur. Polis olayı ciddi bir şekilde soruşturmayı reddedince Tarlan riskli bir karar verir ve kamuoyunu bilgilendirmek ister. Ancak bu karar sadece ailesini değil aynı zamanda kendi hayatını da büyük tehlikeye atar.</p>
-  <a href="#" class="incele-btn">Daha fazlası...</a>  
-</article>
+  <?php
+    $sql = "SELECT film_ID, film_isim, film_resim, film_VFpuan, film_IMDbpuan, film_Yönetmen, film_Senarist, film_Süre, film_Açıklama, film_aksiyon, film_aile, film_bilimKurgu, film_biyografi, film_komedi, film_dram, film_korku, film_romantik, film_macera, film_gerilim, film_animasyon, film_belgesel, film_suç, film_tarih, film_fantezi, film_müzikal FROM film WHERE film_ANASAYFA = 1;";
+    $sonuc = $baglan->query($sql);
 
-<article class="film">
-  <div class="film-icerik">
-    <div class="film-sol">
-      <h2>Bataklık</h2>
-      <img src="img/bataklık.jpg">
-      
-    </div>
-    <div class="film-sag">
-      <div class="puanVizyon"><strong>Vizyon Film:</strong> 4.1 / 10</div>
-      <div class="puanIMDb"><strong>IMDb:</strong> 4.3/ 10</div>
-      <div class ="ekBilgi"><strong>Yönetmen:  Taneli Mustonen, Brad Watson, Brad Watson</strong></div>
-      <div class ="ekBilgi"><strong>Senarist: Gavin Mehrtens</strong></div>
-      <div class ="ekBilgi"><strong>Tür:  Korku, Gerilim</strong></div>
-      <div class ="ekBilgi"><strong>Film Süresi: 1s 27dk</strong></div>
+    if($sonuc->num_rows > 0) {
+      while($satir = $sonuc->fetch_assoc()){
+        echo "<article class='film'>";
+        echo "<div class='film-icerik'>";
+        echo "<div class='film-sol'>";
+        echo "<h2>" .  $satir["film_isim"] . "</h2>";
+        echo "<img src= " .  $satir["film_resim"] . ">";
+        echo "</div>";
+        echo " <div class='film-sag'>";
+        echo "<div class='puanVizyon'><strong>Vizyon Film: " .  $satir["film_VFpuan"] . " / 10</strong></div>";
+        echo "<div class='puanIMDb'><strong>IMDb:</strong> " .  $satir["film_IMDbpuan"] . "/ 10</div>";
+        echo "<div class ='ekBilgi'><strong>Yönetmen: " .  $satir["film_Yönetmen"] . "</strong></div>";
+        echo "<div class ='ekBilgi'><strong>Senarist: " .  $satir["film_Senarist"] . "</strong></div>";
+        $turler = [];
+        if ($satir['film_aksiyon']) $turler[] = "Aksiyon";
+        if ($satir['film_aile']) $turler[] = "Aile";
+        if ($satir['film_bilimKurgu']) $turler[] = "Bilim Kurgu";
+        if ($satir['film_biyografi']) $turler[] = "Biyografi";
+        if ($satir['film_komedi']) $turler[] = "Komedi";
+        if ($satir['film_dram']) $turler[] = "Dram";
+        if ($satir['film_korku']) $turler[] = "Korku";
+        if ($satir['film_romantik']) $turler[] = "Romantik";
+        if ($satir['film_macera']) $turler[] = "Macera";
+        if ($satir['film_gerilim']) $turler[] = "Gerilim";
+        if ($satir['film_animasyon']) $turler[] = "Animasyon";
+        if ($satir['film_belgesel']) $turler[] = "Belgesel";
+        if ($satir['film_suç']) $turler[] = "Suç";
+        if ($satir['film_tarih']) $turler[] = "Tarih";
+        if ($satir['film_fantezi']) $turler[] = "Fantezi";
+        if ($satir['film_müzikal']) $turler[] = "Müzikal";
+        $tur_metni = implode(", ", $turler);
 
-    </div>
-    
-  </div>
-  <p class="film-aciklama">Bataklık, Louisiana Bayou'da korkunç bir yırtıcı tarafından kovalanan bir grup arkadaşın hikayesini konu ediyor. Ölen ablasının küllerini götürmek için yola çıkan Kyle, talihsiz bir kazanın kurbanı olur. Kyle’ın bindiği uçak, Louisiana'nın ünlü Bayou bataklığında ıssız bir noktaya düşer. Yolcular başlarına gelen bu olayın yaşayabilecekleri en büyük felaket olduğunu düşünürler. Ancak  Amerikan timsahlarının atası olan, doğal yaşam alanlarına mükemmel uyum sağlayan bir sürü peşlerine düştüğün kendilerini daha büyük bir felaketin içinde bulurlar. </p>
-  <a href="#" class="incele-btn">Daha fazlası...</a>  
-</article>
+        echo "<div class ='ekBilgi'><strong>Tür:  " .  $tur_metni . "</strong></div>";
+        echo "<div class ='ekBilgi'><strong>Film Süresi: " .  $satir["film_Süre"] . "</strong></div>";
+        echo "</div>";
+        echo "</div>";
+        echo "<p class='film-aciklama'>" .  $satir["film_Açıklama"] . "</p>";
+        echo "<a href='film_detay.php?id=" . $satir["film_ID"] . "' class='incele-btn'>Daha fazlası...</a>";
+        echo "</article>";
+      }
+    }
+ $baglan->close();
 
-<article class="film">
-  <div class="film-icerik">
-    <div class="film-sol">
-      <h2>Minecraft</h2>
-      <img src="img/minecraft.jpg">
-      
-    </div>
-    <div class="film-sag">
-      <div class="puanVizyon"><strong>Vizyon Film:</strong> 5.0 / 10</div>
-      <div class="puanIMDb"><strong>IMDb:</strong> 6.0 / 10</div>
-      <div class ="ekBilgi"><strong>Yönetmen: Jared Hess</strong></div>
-      <div class ="ekBilgi"><strong>Senarist: Peter Sollett, Allison Schroeder</strong></div>
-      <div class ="ekBilgi"><strong>Tür:  Macera, Komedi, Aile</strong></div>
-      <div class ="ekBilgi"><strong>Film Süresi: 1s 41dk</strong></div>
-    </div>
-    
-  </div>
-  <p class="film-aciklama">Bir Minecraft Filmi, gizemli bir geçitten geçerek bilmedikleri bir dünyaya adım atan bir grup uyumsuzun hikayesini konu ediyor. Bambaşka karaktere sahip olan Garrett Garrison, Henry, Natalie ve Dawn, gizemli bir kapıdan tuhaf bir dünyaya çekildiklerinde günlük hayatlarından koparlar. Onlar artık neredeyse sınırsız hayal gücünün hakim olduğu garip, kübik bir ülke olan Overworld’dedir. Eve geri dönüş yolunu bulmak için bu alışılmadık dünyaya hakim olmaları ve kendilerini zombiler ve yaban domuzları gibi tehditlere karşı savunmaları gerekir. Bu süreçte dört maceracıya deneyimli bir zanaatkar olan Steve eşlik eder. Bu yolculuk, onlara cesaret ve yaratıcılıklarını keşfetme şansı verecektir.</p>
-  <a href="#" class="incele-btn">Daha fazlası...</a>  
-</article>
+    ?>
 
 </main>
   <footer>
