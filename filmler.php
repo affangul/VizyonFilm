@@ -1,6 +1,17 @@
 <?php
  include("admin/bağlan.php");
 
+ 
+ $tum_turler = [
+  "aksiyon", "aile", "bilimKurgu", "biyografi", "komedi", "dram",
+  "korku", "romantik", "macera", "gerilim", "animasyon", "belgesel",
+  "suç", "tarih", "fantezi", "müzikal"
+];
+
+$filtreli_tur = isset($_GET["tur"]) && in_array($_GET["tur"], $tum_turler) ? $_GET["tur"] : "";
+$sql = $filtreli_tur ? "SELECT * FROM film WHERE film_$filtreli_tur = 1" : "SELECT * FROM film";
+$sonuc = $baglan->query($sql);
+
 
 
 ?>
@@ -11,7 +22,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Filmler</title>
-  <link rel="stylesheet" href="css/genelstyle.css">
   <link rel="stylesheet" href="css/filmlerstyle.css">
 </head>
 <body>
@@ -27,22 +37,19 @@
   </header>
 
   <main>
-    <div class="filmler">
+    
+  
+  <div class="filmler">
+  <h1>
     <?php
-    $tum_turler = [
-      "aksiyon", "aile", "bilimKurgu", "biyografi", "komedi", "dram",
-      "korku", "romantik", "macera", "gerilim", "animasyon", "belgesel",
-      "suç", "tarih", "fantezi", "müzikal"
-    ];
-    
-    $filtreli_tur = "";
-    if (isset($_GET["tur"]) && in_array($_GET["tur"], $tum_turler)) {
-      $filtreli_tur = $_GET["tur"];
-      $sql = "SELECT * FROM film WHERE film_$filtreli_tur = 1";
-    } else {
-      $sql = "SELECT * FROM film";
-    }
-    
+      if ($filtreli_tur != "") {
+        echo strtoupper($filtreli_tur) . " Filmleri";
+      } else {
+        echo "Tüm Filmler";
+      }
+    ?>
+  </h1>
+    <?php  
     $sonuc = $baglan->query($sql);
 
     if($sonuc->num_rows > 0) {
@@ -91,23 +98,24 @@
     ?>
 </div>
 <div class="kategori">
+  <h2>Kategoriler</h2>
 <a href="filmler.php?tur=aksiyon" class="<?php echo ($_GET['tur'] ?? '') == 'aksiyon' ? 'aktif' : ''; ?>">Aksiyon</a>
+<a href="filmler.php?tur=aile" class="<?php echo ($_GET['tur'] ?? '') == 'aile' ? 'aktif' : ''; ?>">Aile</a>
+<a href="filmler.php?tur=bilimKurgu" class="<?php echo ($_GET['tur'] ?? '') == 'bilimKurgu' ? 'aktif' : ''; ?>">Bilim Kurgu</a>
+<a href="filmler.php?tur=biyografi" class="<?php echo ($_GET['tur'] ?? '') == 'biyografi' ? 'aktif' : ''; ?>">Biyografi</a>
+<a href="filmler.php?tur=komedi" class="<?php echo ($_GET['tur'] ?? '') == 'komedi' ? 'aktif' : ''; ?>">Komedi</a>
+<a href="filmler.php?tur=dram" class="<?php echo ($_GET['tur'] ?? '') == 'dram' ? 'aktif' : ''; ?>">Dram</a>
+<a href="filmler.php?tur=korku" class="<?php echo ($_GET['tur'] ?? '') == 'korku' ? 'aktif' : ''; ?>">Korku</a>
+<a href="filmler.php?tur=romantik" class="<?php echo ($_GET['tur'] ?? '') == 'romantik' ? 'aktif' : ''; ?>">Romantik</a>
+<a href="filmler.php?tur=macera" class="<?php echo ($_GET['tur'] ?? '') == 'macera' ? 'aktif' : ''; ?>">Macera</a>
+<a href="filmler.php?tur=gerilim" class="<?php echo ($_GET['tur'] ?? '') == 'gerilim' ? 'aktif' : ''; ?>">Gerilim</a>
+<a href="filmler.php?tur=animasyon" class="<?php echo ($_GET['tur'] ?? '') == 'animasyon' ? 'aktif' : ''; ?>">Animasyon</a>
+<a href="filmler.php?tur=belgesel" class="<?php echo ($_GET['tur'] ?? '') == 'belgesel' ? 'aktif' : ''; ?>">Belgesel</a>
+<a href="filmler.php?tur=suç" class="<?php echo ($_GET['tur'] ?? '') == 'suç' ? 'aktif' : ''; ?>">Suç</a>
+<a href="filmler.php?tur=tarih" class="<?php echo ($_GET['tur'] ?? '') == 'tarih' ? 'aktif' : ''; ?>">Tarih</a>
+<a href="filmler.php?tur=fantezi" class="<?php echo ($_GET['tur'] ?? '') == 'fantezi' ? 'aktif' : ''; ?>">Fantezi</a>
+<a href="filmler.php?tur=müzikal" class="<?php echo ($_GET['tur'] ?? '') == 'müzikal' ? 'aktif' : ''; ?>">Müzikal</a>
 
-  <a href="filmler.php?tur=aile">Aile</a>
-  <a href="filmler.php?tur=bilimKurgu">Bilim Kurgu</a>
-  <a href="filmler.php?tur=biyografi">Biyografi</a>
-  <a href="filmler.php?tur=komedi">Komedi</a>
-  <a href="filmler.php?tur=dram">Dram</a>
-  <a href="filmler.php?tur=korku">Korku</a>
-  <a href="filmler.php?tur=romantik">Romantik</a>
-  <a href="filmler.php?tur=macera">Macera</a>
-  <a href="filmler.php?tur=gerilim">Gerilim</a>
-  <a href="filmler.php?tur=animasyon">Animasyon</a>
-  <a href="filmler.php?tur=belgesel">Belgesel</a>
-  <a href="filmler.php?tur=suç">Suç</a>
-  <a href="filmler.php?tur=tarih">Tarih</a>
-  <a href="filmler.php?tur=fantezi">Fantezi</a>
-  <a href="filmler.php?tur=müzikal">Müzikal</a>
 </div>
 
 </main>
