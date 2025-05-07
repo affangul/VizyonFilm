@@ -5,7 +5,31 @@ if (isset($_GET['id'])) {
     $film_id = intval($_GET['id']);
     $sql = "SELECT * FROM film WHERE film_ID = $film_id";
     $sonuc = $baglan->query($sql);
+?>
 
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ana Sayfa</title>
+  <link rel="stylesheet" href="css/filmdetaystyle.css">
+  <link rel="stylesheet" href="css/genelstyle.css">
+</head>
+<body>
+  <header>
+  <a href="index.php" class="headLogo"><img src="img/logo1.png" ></a>
+    <nav>
+      
+      <a href="index.php">Ana Sayfa</a>
+      <a href="filmler.php">Filmler</a>
+      <a href="hakkımızda.php">Hakkımızda</a>
+      <a href="iletişim.php">İletişim</a>
+    </nav>
+  </header>
+
+  <main>
+  <?php
     if ($sonuc->num_rows > 0) {
         $satir = $sonuc->fetch_assoc();
 
@@ -13,11 +37,13 @@ if (isset($_GET['id'])) {
         echo "<img src='" . $satir["film_resim"] . "' alt='Film Resmi'><br>";
         echo "<strong>Vizyon Film Puanı:</strong> " . $satir["film_VFpuan"] . " / 10<br>";
         echo "<strong>IMDb Puanı:</strong> " . $satir["film_IMDbpuan"] . " / 10<br>";
+        echo "<strong>Çıkış Tarihi:</strong> " . $satir["film_çıkışTarihi"] . "<br>";
         echo "<strong>Yönetmen:</strong> " . $satir["film_Yönetmen"] . "<br>";
         echo "<strong>Senarist:</strong> " . $satir["film_Senarist"] . "<br>";
         echo "<strong>Süre:</strong> " . $satir["film_Süre"] . "<br>";
+        echo "<strong>Oyuncular:</strong> ". $satir["film_Oyuncular"] . "<br>";
+        
 
-        // Türleri yine ayıkla
         $turler = [];
         if ($satir['film_aksiyon']) $turler[] = "Aksiyon";
         if ($satir['film_aile']) $turler[] = "Aile";
@@ -47,3 +73,16 @@ if (isset($_GET['id'])) {
 
 $baglan->close();
 ?>
+</main>
+
+<footer>
+  <nav>
+      <a href="index.php">Ana Sayfa</a>
+      <a href="filmler.php">Filmler</a>
+      <a href="hakkımızda.php">Hakkımızda</a>
+      <a href="iletişim.php">İletişim</a>
+    </nav>
+    <p>&copy; 2025 Vizyon Film. Tüm hakları saklıdır.</p>
+  </footer>
+</body>
+</html>
