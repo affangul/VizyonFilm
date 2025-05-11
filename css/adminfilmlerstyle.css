@@ -1,3 +1,17 @@
+.yazıbilgileri{
+    width: 55%;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 15px;
+    background-color: #2e5985;
+    font-family: Arial, sans-serif;
+    border-radius: 24px;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
 .düzenle{
     color: blue;
 }
@@ -21,3 +35,70 @@
     background-color: rgb(19, 202, 19);
     color: white;
 }
+
+.ikibilgi {
+    display: flex;
+    width: 55%;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 15px;
+    background-color: #2e5985;
+    font-family: Arial, sans-serif;
+    border-radius: 24px;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.sol {
+    flex:1;
+}
+.sağ{
+    flex:2;
+}
+
+.türlerkutusu {
+    width: 55%;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 15px;
+    background-color: #2e5985;
+    font-family: Arial, sans-serif;
+    border-radius: 24px;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tür-grubu {
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.tür-grubu span {
+    width: 100%;
+    font-weight: bold;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.türBaşlık {
+    font-weight: 700;
+    font-size: 24px
+
+}
+.tür-grubu label {
+    display: flex;
+    gap: 8px;
+    min-width: 100px;
+}
+
+input[type="checkbox"] {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+
