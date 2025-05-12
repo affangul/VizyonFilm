@@ -101,4 +101,12 @@ input[type="checkbox"] {
     cursor: pointer;
 }
 
+.açıklama{
+    font-size: 16px;
+    font-family: Arial, sans-serif; 
+    font-weight: normal; 
+    width: 55%;
+    box-sizing: border-box;
+    margin-bottom: 5px; 
+}
 

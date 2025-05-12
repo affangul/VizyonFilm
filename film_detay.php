@@ -12,7 +12,7 @@ if (isset($_GET['id'])) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ana Sayfa</title>
+  <title>Detay</title>
   <link rel="stylesheet" href="css/filmdetaystyle.css">
   <link rel="stylesheet" href="css/genelstyle.css">
 </head>
@@ -21,10 +21,10 @@ if (isset($_GET['id'])) {
   <a href="index.php" class="headLogo"><img src="img/logo1.png" ></a>
     <nav>
       
-      <a href="index.php">Ana Sayfa</a>
-      <a href="filmler.php">Filmler</a>
-      <a href="hakkımızda.php">Hakkımızda</a>
-      <a href="iletişim.php">İletişim</a>
+      <a href="#">Ana Sayfa</a>
+      <a href="#">Filmler</a>
+      <a href="#">Hakkımızda</a>
+      <a href="#">İletişim</a>
     </nav>
   </header>
 

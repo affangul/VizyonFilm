@@ -48,8 +48,10 @@ $sorgu = $baglan -> query("INSERT INTO film (film_isim, film_resim, film_VFpuan,
 
 if ($sorgu) {
     echo "<script>alert('Film başarıyla eklendi!');</script>";
+    echo "<script> window.location.href='adminfilmler.php';</script>";
 } else {
     echo "<script>alert('Film eklenemedi. Hata oluştu.');</script>";
+    echo "<script> window.location.href='adminfilmler.php';</script>";
 }
 
 }
@@ -68,10 +70,7 @@ if ($sorgu) {
     <link rel="stylesheet" href="../css/adminfilmlerstyle.css">
 
     <title>Admin Paneli</title>
-    <style>
 
-
-    </style>
 </head>
 <body>
 <button id="menuButton" onclick="toggleMenu()">☰ Menü</button>

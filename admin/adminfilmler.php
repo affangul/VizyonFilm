@@ -1,3 +1,18 @@
+<?php
+include("bağlan.php");
+
+
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['islem']) && $_GET['islem'] == 'sil' && isset($_GET['film_ID'])) {
+    $film_ID = $_GET['film_ID'];
+    // Veritabanından hizmeti siler
+    $sil_sorgu = $baglan->query("DELETE FROM film WHERE film_ID='$film_ID'");
+
+}
+
+
+
+?>
+
 <!doctype html>
 <html lang="tr">
 <head>
@@ -8,7 +23,7 @@
     <link rel="stylesheet" href="../css/admingenelstyle.css">
     <link rel="stylesheet" href="../css/adminfilmlerstyle.css">
 
-    <title>Admin Paneli</title>
+    <title>Filmler</title>
     <style>
 
 
@@ -39,31 +54,24 @@
                 <tr>
                     <th>Film ID</th>
                     <th>İsim</th>
-                    <th>Düzenle</th>
                     <th>Sil</th>
+                    <th>Düzenle</th>
                 </tr>
-                <tr align="center">
-                    <td>1</td>
-                    <td>Şahit</td>
-                    <td><a class="düzenle" href="">Düzenle</a></td>
-                    <td><a class="sil" href="">SİL</a></td>
-                </tr>
-                <tr align="center">
-                    <td>2</td>
-                    <td>Bataklık</td>
-                    <td><a class="düzenle" href="">Düzenle</a></td>
-                    <td><a class="sil" href="">SİL</a></td>
-                </tr>
-                <tr align="center">
-                    <td>3</td>
-                    <td>Minecraft</td>
-                    <td><a class="düzenle" href="">Düzenle</a></td>
-                    <td><a class="sil" href="">SİL</a></td>
-                </tr>
-            </table>
+                <?php
+            $sorgu = $baglan->query("SELECT * FROM film");
+            while ($satir = $sorgu->fetch_object()) {
+                echo "<tr align='center'>
+                    <td>$satir->film_ID</td>
+                    <td>$satir->film_isim</td>
+                    <td><a class='sil' href='adminfilmler.php?islem=sil&film_ID=$satir->film_ID' onclick='return confirm(\"Bu filmi silmek istediğinize emin misiniz?\");'>Sil</a></td>
+                    <td><a class='guncelle' href='adminfilmdüzenle.php?id= $satir->film_ID'>Güncelle</a></td>
+                </tr>";
+            }
+            ?>
+        </table>
+
         </div>
     </div>
-<!-- burda düzenleye tıklayınca altta film ile alakalı tüm bilgiler çıkacak ve orada düzenlenecek-->
     <script src="script.js"></script>
 </body>
 </html>
