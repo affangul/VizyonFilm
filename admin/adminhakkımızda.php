@@ -1,3 +1,20 @@
+<?php
+include("bağlan.php");
+
+if ($_POST) {
+    if (isset($_POST['hakkımızda_submit'])) {
+        $hakkımızda_metin1 = $_POST["hakkımızda_metin1"];
+        $hakkımızda_metin2 = $_POST["hakkımızda_metin2"];
+        $hakkımızda_metin3 = $_POST["hakkımızda_metin3"];
+
+        $sorgu = $baglan->query("DELETE FROM hakkımızda");
+        $sorgu = $baglan->query("INSERT INTO hakkımızda (hakkımızda_metin1, hakkımızda_metin2, hakkımızda_metin3) VALUES ('$hakkımızda_metin1', '$hakkımızda_metin2', '$hakkımızda_metin3')");
+    }
+}
+
+?>
+
+
 <!doctype html>
 <html lang="tr">
 <head>
@@ -27,19 +44,25 @@
     </div>
     <div id="content">
     <div id="ortala">
+
+    <?php
+    $sorgu = $baglan->query("SELECT * FROM hakkımızda");
+    $satir = $sorgu->fetch_object();
+    ?>
+
     <h1>Hakkımızda</h1>
     <form action="" method="post" enctype="multipart/form-data">
 
-        <label for="metin1">Üst Paragraf:</label>
-        <textarea> </textarea><br>
+        <label for="hakkımızda_metin1">Üst Paragraf:</label>
+        <textarea name="hakkımızda_metin1" id="hakkımızda_metin1"><?php echo $satir->hakkımızda_metin1; ?> </textarea><br>
        
-        <label for="metin2">Orta Paragraf:</label>
-        <textarea ></textarea><br>
+        <label for="hakkımızda_metin2">Orta Paragraf:</label>
+        <textarea name="hakkımızda_metin2" id="hakkımızda_metin2"><?php echo $satir->hakkımızda_metin2; ?></textarea><br>
        
-        <label for="metin3">Alt Paragraf:</label>
-        <textarea ></textarea><br>
+        <label for="hakkımızda_metin3">Alt Paragraf:</label>
+        <textarea name="hakkımızda_metin3" id="hakkımızda_metin3"><?php echo $satir->hakkımızda_metin3; ?></textarea><br>
        
-        <input type="submit">
+        <input type="submit" name="hakkımızda_submit" value="Kaydet">
     </form>
     </div>
     </div>

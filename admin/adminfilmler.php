@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['islem']) && $_GET['islem
         <div id="mesajlar">
             <h1> Filmler </h1>
         </div>
-        <div id="ortala5">
+        <div id="ortala">
             <table>
                 <tr>
                     <th>Film ID</th>

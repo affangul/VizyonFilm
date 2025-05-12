@@ -1,3 +1,19 @@
+<?php
+include("bağlan.php");
+
+
+if ($_POST) {
+        $iletişim_telefon = $_POST["iletişim_telefon"];
+        $iletişim_mail= $_POST["iletişim_mail"];
+        $iletişim_adres = $_POST["iletişim_adres"];
+        $iletişim_harita = $_POST["iletişim_harita"];
+        $sorgu = $baglan -> query("DELETE FROM iletişim_bilgiler");
+        $sorgu = $baglan -> query("INSERT INTO iletişim_bilgiler (iletişim_telefon, iletişim_mail, iletişim_adres, iletişim_harita) VALUES ('$iletişim_telefon','$iletişim_mail','$iletişim_adres','$iletişim_harita')");
+    
+}
+
+?>
+
 <!doctype html>
 <html lang="tr">
 <head>
@@ -28,22 +44,26 @@
 
     <div id="content">
     <div id="ortala">
+        <?php
+        $sorgu = $baglan->query("SELECT * FROM iletişim_bilgiler");
+        $satir = $sorgu->fetch_object();
+        ?>
     <h1>Hakkımızda</h1>
     <form action="" method="post" enctype="multipart/form-data">
 
-        <label for="metin1">Telefon:</label>
-        <textarea> </textarea><br>
+        <label for="iletişim_telefon">Telefon:</label>
+        <textarea name="iletişim_telefon" id="iletişim_telefon"><?php echo $satir->iletişim_Telefon; ?></textarea><br>
        
-        <label for="metin2">Mail:</label>
-        <textarea ></textarea><br>
+        <label for="iletişim_mail">Mail:</label>
+        <textarea name="iletişim_mail" id="iletişim_mail"><?php echo $satir->iletişim_Mail; ?></textarea><br>
        
-        <label for="metin3">Adres:</label>
-        <textarea ></textarea><br>
+        <label for="iletişim_adres">Adres:</label>
+        <textarea name="iletişim_adres" id="iletişim_adres"><?php echo $satir->iletişim_Adres; ?></textarea><br>
 
-        <label for="metin3">Harita:</label>
-        <textarea ></textarea><br>
+        <label for="iletişim_harita">Harita:</label>
+        <textarea name="iletişim_harita" id="iletişim_harita"><?php echo $satir->iletişim_Harita; ?></textarea><br>
        
-        <input type="submit">
+        <input type="submit" name="iletişim_submit" value="Kaydet">
     </form>
     </div>
     </div>

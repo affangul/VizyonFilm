@@ -26,7 +26,7 @@
         <div id="mesajlar">
             <h1> Mesajlar </h1>
         </div>
-        <div id="ortala5">
+        <div id="ortala">
             <table>
                 <tr>
                     <th>Mesaj ID</th>
