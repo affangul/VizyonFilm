@@ -1,3 +1,34 @@
+<?php
+ include("admin/bağlan.php");
+
+ $sql = "SELECT * FROM iletişim_bilgiler";
+ $sonuc = $baglan->query($sql);
+ $satir = $sonuc->fetch_assoc();
+ $iletişimtelefon = $satir["iletişim_Telefon"];
+ $iletişimmail = $satir["iletişim_Mail"];
+ $iletişimadres = $satir["iletişim_Adres"];
+ $iletişimharita = $satir["iletişim_Harita"];
+
+
+ if ($_POST) {
+  $mesaj_isim = $_POST["mesaj_isim"];
+  $mesaj_telefon = $_POST["mesaj_telefon"];
+  $mesaj_mail = $_POST["mesaj_mail"];
+  $mesaj_metin = $_POST["mesaj_metin"];
+
+  $sorgu = $baglan->query("INSERT INTO iletişim_mesajlar (mesaj_isim, mesaj_telefon, mesaj_mail, mesaj_metin) VALUES ('$mesaj_isim', '$mesaj_telefon', '$mesaj_mail', '$mesaj_metin')");
+
+  if ($sorgu) {
+    $mesaj_gonderildi = true;
+} else {
+    $mesaj_gonderildi = false;
+}
+
+ }
+
+ ?>
+
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -21,10 +52,10 @@
   </header>
   <main>
   <h1>Bizimle İletişime Geçin</h1>
-  <p><strong>Telefon:+90 123 456 78 90</strong></p>
-  <p><strong>Mail: VizyonFilm@gmail.com</strong></p>
-  <p><strong>Adres: Türkiye/Ankara</strong></p>
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d195884.3018212979!2d32.59761224121527!3d39.90352281167282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d347d520732db1%3A0xbdc57b0c0842b8d!2sAnkara!5e0!3m2!1str!2str!4v1744236202966!5m2!1str!2str" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <p><strong>Telefon:+<?php echo $iletişimtelefon;  ?></strong></p>
+  <p><strong>Mail: <?php echo $iletişimmail;  ?></strong></p>
+  <p><strong>Adres: <?php echo $iletişimadres;  ?></strong></p>
+  <?php echo $iletişimharita;  ?>
   
     <section class="belge">
     <div class="form-alani">
@@ -40,6 +71,12 @@
         </form>
     </div>
 </section> 
+
+<?php if (isset($mesaj_gonderildi) && $mesaj_gonderildi): ?>
+<script>
+    alert("Mesajınız başarıyla gönderildi!");
+</script>
+<?php endif; ?>
   </main>
 
 

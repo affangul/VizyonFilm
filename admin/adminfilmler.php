@@ -4,7 +4,7 @@ include("bağlan.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['islem']) && $_GET['islem'] == 'sil' && isset($_GET['film_ID'])) {
     $film_ID = $_GET['film_ID'];
-    // Veritabanından hizmeti siler
+
     $sil_sorgu = $baglan->query("DELETE FROM film WHERE film_ID='$film_ID'");
 
 }

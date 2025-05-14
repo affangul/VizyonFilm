@@ -1,3 +1,18 @@
+<?php
+include("bağlan.php");
+
+
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['islem']) && $_GET['islem'] == 'sil' && isset($_GET['mesaj_ID'])) {
+    $mesaj_ID = $_GET['mesaj_ID'];
+
+    $sil_sorgu = $baglan->query("DELETE FROM film WHERE film_ID='$film_ID'");
+
+}
+
+
+
+?>
+
 <!doctype html>
 <html lang="tr">
 <head>
@@ -36,30 +51,19 @@
                     <th>Metin</th>
                     <th>Sil</th>
                 </tr>
-                <tr align="center">
-                    <td>1</td>
-                    <td>isim</td>
-                    <td>123456</td>
-                    <td>mail@mail.com</td>
-                    <td>merhaba dünya</td>
-                    <td><a class="sil" href="">SİL</a></td>
-                </tr>
-                <tr align="center">
-                    <td>2</td>
-                    <td>isima</td>
-                    <td>123456</td>
-                    <td>mailfsa@mail.com</td>
-                    <td>makinalaşmak istiyorum</td>
-                    <td><a class="sil" href="">SİL</a></td>
-                </tr>
-                <tr align="center">
-                    <td>3</td>
-                    <td>1isim3</td>
-                    <td>123456</td>
-                    <td>maasdil@mail.com</td>
-                    <td>ah yalan dünyada</td>
-                    <td><a class="sil" href="">SİL</a></td>
-                </tr>
+                <?php
+            $sorgu = $baglan->query("SELECT * FROM iletişim_mesajlar");
+            while ($satir = $sorgu->fetch_object()) {
+                echo "<tr align='center'>
+                    <td>$satir->mesaj_ID</td>
+                    <td>$satir->mesaj_isim</td>
+                    <td>$satir->mesaj_telefon</td>
+                    <td>$satir->mesaj_mail</td>
+                    <td>$satir->mesaj_metin</td>
+                    <td><a class='sil' href='adminmesaj.php?islem=sil&mesaj_ID=$satir->mesaj_ID' onclick='return confirm(\"Bu mesajı silmek istediğinize emin misiniz?\");'>Sil</a></td>
+                </tr>";
+            }
+            ?>
             </table>
         </div>
     </div>

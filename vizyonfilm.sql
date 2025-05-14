@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 12 May 2025, 10:52:21
+-- Üretim Zamanı: 14 May 2025, 06:09:18
 -- Sunucu sürümü: 10.4.32-MariaDB
 -- PHP Sürümü: 8.2.12
 
@@ -134,6 +134,15 @@ CREATE TABLE `iletişim_mesajlar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Tablo döküm verisi `iletişim_mesajlar`
+--
+
+INSERT INTO `iletişim_mesajlar` (`mesaj_ID`, `mesaj_isim`, `mesaj_telefon`, `mesaj_mail`, `mesaj_metin`) VALUES
+(1, 'isim', '123456', 'mail@mail.com', 'merhaba dünya'),
+(2, 'isima', '123456', 'mailfsa@mail.com', 'makinalaşmak istiyorum'),
+(3, '1isim3', '123456', 'maasdil@mail.com', 'ah yalan dünyada');
+
+--
 -- Dökümü yapılmış tablolar için indeksler
 --
 
@@ -175,7 +184,7 @@ ALTER TABLE `film`
 -- Tablo için AUTO_INCREMENT değeri `iletişim_mesajlar`
 --
 ALTER TABLE `iletişim_mesajlar`
-  MODIFY `mesaj_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `mesaj_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
