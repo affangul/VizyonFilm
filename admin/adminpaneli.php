@@ -1,3 +1,12 @@
+<?php
+session_start();
+include("bağlan.php");
+if ($_SESSION["giris"] != sha1(md5("var")) || $_COOKIE["kullanici"] != "msb"){
+    header("Location: cikis.php");
+    exit();
+}
+?>
+
 <!doctype html>
 <html lang="tr">
 <head>

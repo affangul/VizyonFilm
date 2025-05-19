@@ -1,5 +1,10 @@
 <?php
+session_start();
 include("bağlan.php");
+if ($_SESSION["giris"] != sha1(md5("var")) || $_COOKIE["kullanici"] != "msb"){
+    header("Location: cikis.php");
+    exit();
+}
 
 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['islem']) && $_GET['islem'] == 'sil' && isset($_GET['film_ID'])) {
@@ -44,16 +49,17 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['islem']) && $_GET['islem
     <div class="filmekle"><a  href="adminfilmekle.php"><div>Film Ekle</div></a></div>
 
 
-    
         <br> <br> <br> <br> <br>
-        <div id="mesajlar">
-            <h1> Filmler </h1>
-        </div>
-        <div id="ortala">
+        
+        
+            <h1 class="başlık"> Filmler </h1>
+        
+        
             <table>
                 <tr>
                     <th>Film ID</th>
                     <th>İsim</th>
+                    <th>Görüntülenme</th>
                     <th>Sil</th>
                     <th>Düzenle</th>
                 </tr>
@@ -63,6 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['islem']) && $_GET['islem
                 echo "<tr align='center'>
                     <td>$satir->film_ID</td>
                     <td>$satir->film_isim</td>
+                    <td>$satir->film_görüntülenme</td>
                     <td><a class='sil' href='adminfilmler.php?islem=sil&film_ID=$satir->film_ID' onclick='return confirm(\"Bu filmi silmek istediğinize emin misiniz?\");'>Sil</a></td>
                     <td><a class='guncelle' href='adminfilmdüzenle.php?id= $satir->film_ID'>Güncelle</a></td>
                 </tr>";
@@ -70,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['islem']) && $_GET['islem
             ?>
         </table>
 
-        </div>
+        
     </div>
     <script src="script.js"></script>
 </body>

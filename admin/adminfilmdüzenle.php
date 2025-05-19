@@ -1,6 +1,10 @@
 <?php
+session_start();
 include("bağlan.php");
-
+if ($_SESSION["giris"] != sha1(md5("var")) || $_COOKIE["kullanici"] != "msb"){
+    header("Location: cikis.php");
+    exit();
+}
 
 
 $id = $_GET['id'] ?? 0;

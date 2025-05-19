@@ -3,6 +3,10 @@
 
 if (isset($_GET['id'])) {
     $film_id = intval($_GET['id']);
+
+    $sql = "UPDATE film SET film_görüntülenme = film_görüntülenme + 1 WHERE film_ID = $film_id";
+    $baglan->query($sql);
+
     $sql = "SELECT * FROM film WHERE film_ID = $film_id";
     $sonuc = $baglan->query($sql);
 ?>

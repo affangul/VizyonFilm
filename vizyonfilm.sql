@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 14 May 2025, 06:09:18
+-- Üretim Zamanı: 19 May 2025, 18:34:00
 -- Sunucu sürümü: 10.4.32-MariaDB
 -- PHP Sürümü: 8.2.12
 
@@ -33,6 +33,13 @@ CREATE TABLE `admin` (
   `admin_şifre` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Tablo döküm verisi `admin`
+--
+
+INSERT INTO `admin` (`admin_ID`, `admin_isim`, `admin_şifre`) VALUES
+(1, 'admin', '1234');
+
 -- --------------------------------------------------------
 
 --
@@ -53,6 +60,7 @@ CREATE TABLE `film` (
   `film_çıkışTarihi` text NOT NULL,
   `film_Vizyonda` tinyint(1) NOT NULL,
   `film_ANASAYFA` tinyint(1) NOT NULL,
+  `film_görüntülenme` int(11) DEFAULT NULL,
   `film_aksiyon` tinyint(1) NOT NULL,
   `film_aile` tinyint(1) NOT NULL,
   `film_bilimKurgu` tinyint(1) NOT NULL,
@@ -75,10 +83,10 @@ CREATE TABLE `film` (
 -- Tablo döküm verisi `film`
 --
 
-INSERT INTO `film` (`film_ID`, `film_isim`, `film_resim`, `film_VFpuan`, `film_IMDbpuan`, `film_Yönetmen`, `film_Senarist`, `film_Süre`, `film_Açıklama`, `film_Oyuncular`, `film_çıkışTarihi`, `film_Vizyonda`, `film_ANASAYFA`, `film_aksiyon`, `film_aile`, `film_bilimKurgu`, `film_biyografi`, `film_komedi`, `film_dram`, `film_korku`, `film_romantik`, `film_macera`, `film_gerilim`, `film_animasyon`, `film_belgesel`, `film_suç`, `film_tarih`, `film_fantezi`, `film_müzikal`) VALUES
-(1, 'Şahit (The Witness)', 'img/witness.png', '7.5', '7.2', 'Nader Saeivar', 'Nader Saeivar, Jafar Panahi', '1s 40dk', 'Şahit, arkadaşının kocası tarafından katledilmesine şahit olan bir kadının hikayesini konu ediyor. Tarlan, arkadaşı Rananın üst düzey bir devlet memuru olan kocası tarafından nasıl öldürüldüğüne istemeden de olsa tanık olur. Polis olayı ciddi bir şekilde soruşturmayı reddedince Tarlan riskli bir karar verir ve kamuoyunu bilgilendirmek ister. Ancak bu karar sadece ailesini değil aynı zamanda kendi hayatını da büyük tehlikeye atar.', 'Kelly McGillis, Harrison Ford, Lukas Haas, Viggo Mortensen, Danny Glover, Jan Rubeš', '', 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(2, 'Bataklık (The Bayou)', 'img/bataklık.jpg', '4.1', '4.3', 'Taneli Mustonen, Brad Watson, Brad Watson', 'Gavin Mehrtens', '1s 27dk', 'Bataklık, Louisiana Bayou\'da korkunç bir yırtıcı tarafından kovalanan bir grup arkadaşın hikayesini konu ediyor. Ölen ablasının küllerini götürmek için yola çıkan Kyle, talihsiz bir kazanın kurbanı olur. Kyle’ın bindiği uçak, Louisiana\'nın ünlü Bayou bataklığında ıssız bir noktaya düşer. Yolcular başlarına gelen bu olayın yaşayabilecekleri en büyük felaket olduğunu düşünürler. Ancak  Amerikan timsahlarının atası olan, doğal yaşam alanlarına mükemmel uyum sağlayan bir sürü peşlerine düştüğün kendilerini daha büyük bir felaketin içinde bulurlar.', 'Athena Strates, Elisha Applebaum, Madalena Arago, Isabelle Bonfrer, Sarah Priddy, David Newman, Mohammed Mansaray, Andonis Anthony', '6 Şubat 2025', 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0),
-(3, 'Minecraft', 'img/minecraft.jpg', '5.0', '6.0', 'Jared Hess', 'Peter Sollett, Allison Schroeder', '1s 41dk', 'Bir Minecraft Filmi, gizemli bir geçitten geçerek bilmedikleri bir dünyaya adım atan bir grup uyumsuzun hikayesini konu ediyor. Bambaşka karaktere sahip olan Garrett Garrison, Henry, Natalie ve Dawn, gizemli bir kapıdan tuhaf bir dünyaya çekildiklerinde günlük hayatlarından koparlar. Onlar artık neredeyse sınırsız hayal gücünün hakim olduğu garip, kübik bir ülke olan Overworld’dedir. Eve geri dönüş yolunu bulmak için bu alışılmadık dünyaya hakim olmaları ve kendilerini zombiler ve yaban domuzları gibi tehditlere karşı savunmaları gerekir. Bu süreçte dört maceracıya deneyimli bir zanaatkar olan Steve eşlik eder. Bu yolculuk, onlara cesaret ve yaratıcılıklarını keşfetme şansı verecektir.', 'Janson Momoa, Jack Black, Emma Myers, Jennifer Coolidge, Sebastian Eugene Hansen, Danielle Brooks, Pauline Chalamet, Matt Berry', '4 Nisan 2025', 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `film` (`film_ID`, `film_isim`, `film_resim`, `film_VFpuan`, `film_IMDbpuan`, `film_Yönetmen`, `film_Senarist`, `film_Süre`, `film_Açıklama`, `film_Oyuncular`, `film_çıkışTarihi`, `film_Vizyonda`, `film_ANASAYFA`, `film_görüntülenme`, `film_aksiyon`, `film_aile`, `film_bilimKurgu`, `film_biyografi`, `film_komedi`, `film_dram`, `film_korku`, `film_romantik`, `film_macera`, `film_gerilim`, `film_animasyon`, `film_belgesel`, `film_suç`, `film_tarih`, `film_fantezi`, `film_müzikal`) VALUES
+(1, 'Şahit (The Witness)', 'img/witness.png', '7.5', '7.2', 'Nader Saeivar', 'Nader Saeivar, Jafar Panahi', '1s 40dk', 'Şahit, arkadaşının kocası tarafından katledilmesine şahit olan bir kadının hikayesini konu ediyor. Tarlan, arkadaşı Rananın üst düzey bir devlet memuru olan kocası tarafından nasıl öldürüldüğüne istemeden de olsa tanık olur. Polis olayı ciddi bir şekilde soruşturmayı reddedince Tarlan riskli bir karar verir ve kamuoyunu bilgilendirmek ister. Ancak bu karar sadece ailesini değil aynı zamanda kendi hayatını da büyük tehlikeye atar.', 'Kelly McGillis, Harrison Ford, Lukas Haas, Viggo Mortensen, Danny Glover, Jan Rubeš', '', 0, 1, 5, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(2, 'Bataklık (The Bayou)', 'img/bataklık.jpg', '4.1', '4.3', 'Taneli Mustonen, Brad Watson, Brad Watson', 'Gavin Mehrtens', '1s 27dk', 'Bataklık, Louisiana Bayou\'da korkunç bir yırtıcı tarafından kovalanan bir grup arkadaşın hikayesini konu ediyor. Ölen ablasının küllerini götürmek için yola çıkan Kyle, talihsiz bir kazanın kurbanı olur. Kyle’ın bindiği uçak, Louisiana\'nın ünlü Bayou bataklığında ıssız bir noktaya düşer. Yolcular başlarına gelen bu olayın yaşayabilecekleri en büyük felaket olduğunu düşünürler. Ancak  Amerikan timsahlarının atası olan, doğal yaşam alanlarına mükemmel uyum sağlayan bir sürü peşlerine düştüğün kendilerini daha büyük bir felaketin içinde bulurlar.', 'Athena Strates, Elisha Applebaum, Madalena Arago, Isabelle Bonfrer, Sarah Priddy, David Newman, Mohammed Mansaray, Andonis Anthony', '6 Şubat 2025', 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0),
+(3, 'Minecraft', 'img/minecraft.jpg', '5.0', '6.0', 'Jared Hess', 'Peter Sollett, Allison Schroeder', '1s 41dk', 'Bir Minecraft Filmi, gizemli bir geçitten geçerek bilmedikleri bir dünyaya adım atan bir grup uyumsuzun hikayesini konu ediyor. Bambaşka karaktere sahip olan Garrett Garrison, Henry, Natalie ve Dawn, gizemli bir kapıdan tuhaf bir dünyaya çekildiklerinde günlük hayatlarından koparlar. Onlar artık neredeyse sınırsız hayal gücünün hakim olduğu garip, kübik bir ülke olan Overworld’dedir. Eve geri dönüş yolunu bulmak için bu alışılmadık dünyaya hakim olmaları ve kendilerini zombiler ve yaban domuzları gibi tehditlere karşı savunmaları gerekir. Bu süreçte dört maceracıya deneyimli bir zanaatkar olan Steve eşlik eder. Bu yolculuk, onlara cesaret ve yaratıcılıklarını keşfetme şansı verecektir.', 'Janson Momoa, Jack Black, Emma Myers, Jennifer Coolidge, Sebastian Eugene Hansen, Danielle Brooks, Pauline Chalamet, Matt Berry', '4 Nisan 2025', 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -172,7 +180,7 @@ ALTER TABLE `iletişim_mesajlar`
 -- Tablo için AUTO_INCREMENT değeri `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `admin_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `film`

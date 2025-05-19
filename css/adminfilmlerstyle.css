@@ -109,4 +109,6 @@ input[type="checkbox"] {
     box-sizing: border-box;
     margin-bottom: 5px; 
 }
-
+.başlık{
+    margin-left: 10%;
+}

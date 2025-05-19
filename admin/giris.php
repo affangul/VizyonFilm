@@ -1,3 +1,23 @@
+<?php
+session_start();
+include("bağlan.php");
+if($_POST) {
+    $kullanici = $_POST['kullanici'];
+    $sifre = $_POST['sifre'];
+
+     $sorgu = $baglan->query("SELECT admin_isim, admin_şifre FROM admin WHERE (admin_isim ='$kullanici') AND (admin_şifre = '$sifre') ");
+     $kontrol = $sorgu ->num_rows;
+
+     if($kontrol>0){
+        setcookie("kullanici","msb",time() + 3600);
+        $_SESSION["giris"] = sha1(md5("var"));
+         echo "<script> window.location.href='adminpaneli.php';</script>";
+     }
+
+
+}
+?>
+
 <!doctype html>
 <html>
 <head>

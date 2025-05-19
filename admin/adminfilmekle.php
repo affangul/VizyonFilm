@@ -1,5 +1,10 @@
 <?php
- include("bağlan.php");
+session_start();
+include("bağlan.php");
+if ($_SESSION["giris"] != sha1(md5("var")) || $_COOKIE["kullanici"] != "msb"){
+    header("Location: cikis.php");
+    exit();
+}
 
 
  if (isset($_POST['filmekle_submit'])) {
@@ -15,6 +20,7 @@
     $film_çıkışTarihi = $_POST['film_çıkışTarihi'];
     $film_Vizyonda = isset($_POST['film_Vizyonda'])? 1 : 0;
     $film_ANASAYFA = isset($_POST['film_ANASAYFA'])? 1 : 0; 
+    $film_görüntülenme = '0';
     $film_aksiyon = isset($_POST['film_aksiyon'])? 1 : 0;
     $film_aile = isset($_POST['film_aile'])? 1 : 0;
     $film_bilimKurgu = isset($_POST['film_bilimKurgu'])? 1 : 0;
@@ -44,7 +50,7 @@
         }
     }
  
-$sorgu = $baglan -> query("INSERT INTO film (film_isim, film_resim, film_VFpuan, film_IMDbpuan, film_Yönetmen, film_Senarist, film_Süre, film_Açıklama, film_Oyuncular, film_çıkışTarihi, film_Vizyonda, film_ANASAYFA, film_aksiyon, film_aile, film_bilimKurgu, film_komedi, film_dram, film_korku, film_romantik, film_macera, film_gerilim, film_animasyon, film_belgesel, film_suç, film_tarih, film_fantezi, film_müzikal) VALUES ('$film_isim', '$film_resim', '$film_VFpuan', '$film_IMDbpuan', '$film_Yönetmen', '$film_Senarist', '$film_Süre', '$film_Açıklama', '$film_Oyuncular', '$film_çıkışTarihi', '$film_Vizyonda', '$film_ANASAYFA', '$film_aksiyon', '$film_aile', '$film_bilimKurgu', '$film_komedi', '$film_dram', '$film_korku', '$film_romantik', '$film_macera', '$film_gerilim', '$film_animasyon', '$film_belgesel', '$film_suç', '$film_tarih', '$film_fantezi', '$film_müzikal')");
+$sorgu = $baglan -> query("INSERT INTO film (film_isim, film_resim, film_VFpuan, film_IMDbpuan, film_Yönetmen, film_Senarist, film_Süre, film_Açıklama, film_Oyuncular, film_çıkışTarihi, film_Vizyonda, film_ANASAYFA, film_görüntülenme, film_aksiyon, film_aile, film_bilimKurgu, film_komedi, film_dram, film_korku, film_romantik, film_macera, film_gerilim, film_animasyon, film_belgesel, film_suç, film_tarih, film_fantezi, film_müzikal) VALUES ('$film_isim', '$film_resim', '$film_VFpuan', '$film_IMDbpuan', '$film_Yönetmen', '$film_Senarist', '$film_Süre', '$film_Açıklama', '$film_Oyuncular', '$film_çıkışTarihi', '$film_Vizyonda', '$film_ANASAYFA', '$film_görüntülenme', $film_aksiyon', '$film_aile', '$film_bilimKurgu', '$film_komedi', '$film_dram', '$film_korku', '$film_romantik', '$film_macera', '$film_gerilim', '$film_animasyon', '$film_belgesel', '$film_suç', '$film_tarih', '$film_fantezi', '$film_müzikal')");
 
 if ($sorgu) {
     echo "<script>alert('Film başarıyla eklendi!');</script>";
@@ -200,6 +206,7 @@ if ($sorgu) {
         </div>
         <br> <br>
         <input type="submit" name="filmekle_submit" value="Kaydet">
+        
     </form>
 
     </div>
