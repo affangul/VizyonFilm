@@ -25,6 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['islem']) && $_GET['islem
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="../css/admingenelstyle.css">
+    <link rel="stylesheet" href="../css/adminmesajstyle.css">
 
     <title>Mesaj Kontrol</title>
 
@@ -43,10 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['islem']) && $_GET['islem
 
     <div id="content">
         <br> <br> <br> <br> <br>
-        <div id="mesajlar">
-            <h1> Mesajlar </h1>
-        </div>
-        <div id="ortala">
+            <h1 class ="başlık"> Mesajlar </h1>
             <table>
                 <tr>
                     <th>Mesaj ID</th>
@@ -70,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['islem']) && $_GET['islem
             }
             ?>
             </table>
-        </div>
+        
     </div>
 
     <script src="script.js"></script>
