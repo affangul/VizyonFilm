@@ -12,6 +12,25 @@ $filtreli_tur = isset($_GET["tur"]) && in_array($_GET["tur"], $tum_turler) ? $_G
 $sql = $filtreli_tur ? "SELECT * FROM film WHERE film_$filtreli_tur = 1" : "SELECT * FROM film";
 $sonuc = $baglan->query($sql);
 
+$arama_kelime = isset($_GET["arama"]) ? trim($_GET["arama"]) : "";
+
+if ($arama_kelime != "") {
+    $sql = "
+  SELECT * FROM film 
+  WHERE film_isim LIKE '%" . $baglan->real_escape_string($arama_kelime) . "%'
+  ORDER BY 
+    CASE 
+      WHEN film_isim LIKE '" . $baglan->real_escape_string($arama_kelime) . "%' THEN 1 
+      ELSE 2 
+    END,
+    film_isim ASC
+";
+
+} else if ($filtreli_tur) {
+    $sql = "SELECT * FROM film WHERE film_$filtreli_tur = 1";
+} else {
+    $sql = "SELECT * FROM film";
+}
 
 
 ?>
@@ -23,6 +42,7 @@ $sonuc = $baglan->query($sql);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Filmler</title>
   <link rel="stylesheet" href="css/filmlerstyle.css">
+  <link rel="stylesheet" href="css/genelstyle.css">
 </head>
 <body>
 <header>
@@ -34,6 +54,10 @@ $sonuc = $baglan->query($sql);
       <a href="hakkımızda.php">Hakkımızda</a>
       <a href="iletişim.php">İletişim</a>
     </nav>
+    <form action="filmler.php" method="get" class="arama-formu">
+  <input type="text" name="arama" placeholder="Film ara..." required>
+  <button type="submit">Ara</button>
+</form>
   </header>
 
   <main>

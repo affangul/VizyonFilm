@@ -1,16 +1,32 @@
 <?php
- include("admin/bağlan.php");
+include("admin/bağlan.php");
 
- $sql = "SELECT * FROM iletişim_bilgiler";
- $sonuc = $baglan->query($sql);
- $satir = $sonuc->fetch_assoc();
- $iletişimtelefon = $satir["iletişim_Telefon"];
- $iletişimmail = $satir["iletişim_Mail"];
- $iletişimadres = $satir["iletişim_Adres"];
- $iletişimharita = $satir["iletişim_Harita"];
+$sql = "SELECT * FROM iletişim_bilgiler";
+$sonuc = $baglan->query($sql);
+$satir = $sonuc->fetch_assoc();
+$iletişimtelefon = $satir["iletişim_Telefon"];
+$iletişimmail = $satir["iletişim_Mail"];
+$iletişimadres = $satir["iletişim_Adres"];
+$iletişimharita = $satir["iletişim_Harita"];
 
+$arama_kelime = isset($_GET["arama"]) ? trim($_GET["arama"]) : "";
 
- if ($_POST) {
+if ($arama_kelime != "") {
+    $sql = "
+      SELECT * FROM film 
+      WHERE film_isim LIKE '%" . $baglan->real_escape_string($arama_kelime) . "%'
+      ORDER BY 
+        CASE 
+          WHEN film_isim LIKE '" . $baglan->real_escape_string($arama_kelime) . "%' THEN 1 
+          ELSE 2 
+        END,
+        film_isim ASC
+    ";
+} else {
+    $sql = "SELECT * FROM film";
+}
+
+if ($_POST) {
   $mesaj_isim = $_POST["mesaj_isim"];
   $mesaj_telefon = $_POST["mesaj_telefon"];
   $mesaj_mail = $_POST["mesaj_mail"];
@@ -18,16 +34,9 @@
 
   $sorgu = $baglan->query("INSERT INTO iletişim_mesajlar (mesaj_isim, mesaj_telefon, mesaj_mail, mesaj_metin) VALUES ('$mesaj_isim', '$mesaj_telefon', '$mesaj_mail', '$mesaj_metin')");
 
-  if ($sorgu) {
-    $mesaj_gonderildi = true;
-} else {
-    $mesaj_gonderildi = false;
+  $mesaj_gonderildi = $sorgu ? true : false;
 }
-
- }
-
- ?>
-
+?>
 
 <!DOCTYPE html>
 <html lang="tr">
@@ -37,52 +46,53 @@
   <title>İletişim</title>
   <link rel="stylesheet" href="css/genelstyle.css">
   <link rel="stylesheet" href="css/iletişimstyle.css">
-  
 </head>
 <body>
   <header>
-  <a href="index.php" class="headLogo"><img src="img/logo1.png" ></a>
-    <nav>
-      
+    <div class="headLogo">
+      <a href="index.php"><img src="img/logo1.png"></a>
+    </div>
+    <nav class="headerMenu">
       <a href="index.php">Ana Sayfa</a>
       <a href="filmler.php">Filmler</a>
       <a href="hakkımızda.php">Hakkımızda</a>
       <a href="iletişim.php">İletişim</a>
     </nav>
+    <form action="filmler.php" method="get" class="arama-formu">
+      <input type="text" name="arama" placeholder="Film ara..." required>
+      <button type="submit">Ara</button>
+    </form>
   </header>
-  <main>
-  <h1>Bizimle İletişime Geçin</h1>
-  <p><strong>Telefon:+<?php echo $iletişimtelefon;  ?></strong></p>
-  <p><strong>Mail: <?php echo $iletişimmail;  ?></strong></p>
-  <p><strong>Adres: <?php echo $iletişimadres;  ?></strong></p>
-  <?php echo $iletişimharita;  ?>
-  
-    <section class="belge">
-    <div class="form-alani">
-        <h3>Bizimle İletişime Geçin</h3>
-        <form action="" method="post" onsubmit="return validateForm()">
-            <div class="input-grubu">
-                <input type="text" id="mesaj_isim" name="mesaj_isim" placeholder="İsim">
-                <input type="text" id="mesaj_telefon" name="mesaj_telefon" placeholder="Telefon">
-                <input type="text" id="mesaj_mail" name="mesaj_mail" placeholder="Mail">
-            </div>
-            <textarea id="mesaj_metin" name="mesaj_metin" placeholder="Mesajınız"></textarea><br><br>
-            <button type="submit">Gönder</button>
-        </form>
-    </div>
-</section> 
 
-<?php if (isset($mesaj_gonderildi) && $mesaj_gonderildi): ?>
-<script>
-    alert("Mesajınız başarıyla gönderildi!");
-</script>
-<?php endif; ?>
+  <main>
+    <h1>Bizimle İletişime Geçin</h1>
+    <p><strong>Telefon: +<?php echo $iletişimtelefon; ?></strong></p>
+    <p><strong>Mail: <?php echo $iletişimmail; ?></strong></p>
+    <p><strong>Adres: <?php echo $iletişimadres; ?></strong></p>
+    <?php echo $iletişimharita; ?>
+
+    <section class="belge">
+      <div class="form-alani">
+        <h3>Bizimle İletişime Geçin</h3>
+        <form action="" method="post">
+          <div class="input-grubu">
+            <input type="text" name="mesaj_isim" placeholder="İsim">
+            <input type="text" name="mesaj_telefon" placeholder="Telefon">
+            <input type="text" name="mesaj_mail" placeholder="Mail">
+          </div>
+          <textarea name="mesaj_metin" placeholder="Mesajınız"></textarea><br><br>
+          <button class="göndertuş" type="submit">Gönder</button>
+        </form>
+      </div>
+    </section>
+
+    <?php if (isset($mesaj_gonderildi) && $mesaj_gonderildi): ?>
+      <script>alert("Mesajınız başarıyla gönderildi!");</script>
+    <?php endif; ?>
   </main>
 
-
-
   <footer>
-  <nav>
+    <nav>
       <a href="index.php">Ana Sayfa</a>
       <a href="filmler.php">Filmler</a>
       <a href="hakkımızda.php">Hakkımızda</a>

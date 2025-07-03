@@ -74,7 +74,7 @@ textarea {
     margin-top: 15px;
 }
 
-button[type="submit"] {
+.göndertuş {
     display: block;
     margin: 20px auto 0;
     padding: 12px 30px;
@@ -87,6 +87,33 @@ button[type="submit"] {
     transition: background-color 0.3s;
 }
 
-button[type="submit"]:hover {
+.göndertuş:hover {
     background-color: #e88d00;
+}
+
+.arama-formu {
+  display: flex;
+  align-items: center;
+}
+
+.arama-formu input[type="text"] {
+  padding: 8px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.arama-formu button {
+  margin-left: 5px;
+  padding: 8px 16px;
+  background-color: #e6b800;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.arama-formu button:hover {
+  background-color: #997b01;
 }
