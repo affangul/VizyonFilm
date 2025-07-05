@@ -14,6 +14,7 @@ $film = $sorgu->fetch_assoc();
 
 if (isset($_POST['film_guncelle'])) {
     $film_isim = $_POST['film_isim'];
+    $film_fragman = $_POST['film_fragman'];
     $film_VFpuan = $_POST['film_VFpuan'];
     $film_IMDbpuan = $_POST['film_IMDbpuan'];
     $film_Yönetmen = $_POST['film_Yönetmen'];
@@ -60,6 +61,7 @@ if (isset($_POST['film_guncelle'])) {
 
     $sorgu = $baglan->query("UPDATE film SET 
         film_isim='$film_isim',
+        film_fragman='$film_fragman',
         film_resim='$film_resim',
         film_VFpuan='$film_VFpuan',
         film_IMDbpuan='$film_IMDbpuan',
@@ -126,6 +128,9 @@ if (isset($_POST['film_guncelle'])) {
         <div class="yazıbilgileri">
           <label for="film_isim">İsim:</label>
           <input type="text" name="film_isim" id="film_isim" value="<?= $film['film_isim'] ?>">
+
+          <label for="film_fragman">Fragman URL:</label>
+          <input type="text" name="film_fragman" id="film_fragman" value="<?= $film['film_fragman'] ?>">
 
           <label for="resimDosyası">Resim Yükle:</label>
           <input type="file" name="resimDosyası" id="resimDosyası">

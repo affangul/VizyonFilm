@@ -59,6 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['islem']) && $_GET['islem
                 <tr>
                     <th>Film ID</th>
                     <th>İsim</th>
+                    <th>Fragman url</th>
                     <th>Görüntülenme</th>
                     <th>Sil</th>
                     <th>Düzenle</th>
@@ -69,6 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['islem']) && $_GET['islem
                 echo "<tr align='center'>
                     <td>$satir->film_ID</td>
                     <td>$satir->film_isim</td>
+                    <td>$satir->film_fragman</td>
                     <td>$satir->film_görüntülenme</td>
                     <td><a class='sil' href='adminfilmler.php?islem=sil&film_ID=$satir->film_ID' onclick='return confirm(\"Bu filmi silmek istediğinize emin misiniz?\");'>Sil</a></td>
                     <td><a class='guncelle' href='adminfilmdüzenle.php?id= $satir->film_ID'>Güncelle</a></td>

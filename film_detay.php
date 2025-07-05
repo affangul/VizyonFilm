@@ -1,7 +1,7 @@
 <?php
  include("admin/bağlan.php");
 
-  $arama_kelime = isset($_GET["arama"]) ? trim($_GET["arama"]) : "";
+ $arama_kelime = isset($_GET["arama"]) ? trim($_GET["arama"]) : "";
 
 if ($arama_kelime != "") {
     $sql = "
@@ -18,7 +18,7 @@ if ($arama_kelime != "") {
 } else {
     $sql = "SELECT * FROM film";
 }
-
+ 
 
 
 if (isset($_GET['id'])) {
@@ -29,6 +29,11 @@ if (isset($_GET['id'])) {
 
     $sql = "SELECT * FROM film WHERE film_ID = $film_id";
     $sonuc = $baglan->query($sql);
+
+    $sql2 = "SELECT * FROM yorum WHERE yorum_film_ID = $film_id AND yorum_görünürlük = '1'";
+
+    $sonuc2 = $baglan->query($sql2);
+
 ?>
 
 <!DOCTYPE html>
@@ -69,8 +74,9 @@ if (isset($_GET['id'])) {
       <img src="<?php echo $satir['film_resim']; ?>" alt="Film Resmi">
     </div>
     <div class="film-video">
-      <iframe width="100%" height="315" src="https://www.youtube.com/embed/VIDEO_ID" 
-        title="Film Fragmanı" frameborder="0" allowfullscreen></iframe>
+      <iframe width="100%" height="315" src="https://www.youtube.com/embed/<?php echo $satir['film_fragman']; ?>" 
+      title="Film Fragmanı" frameborder="0" allowfullscreen></iframe>
+
     </div>
   </div>
 
@@ -109,10 +115,11 @@ if (isset($_GET['id'])) {
     } else {
         echo "Film bulunamadı.";
     }
-    
+  }
 
 $baglan->close();
   ?>
+ 
 </main>
 
 <footer>
