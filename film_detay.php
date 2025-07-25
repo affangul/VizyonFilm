@@ -19,6 +19,21 @@ if ($arama_kelime != "") {
     $sql = "SELECT * FROM film";
 }
  
+ if ($_POST) {
+  $yorum_kullanıcı = $_POST["yorum_kullanıcı"];
+  $yorum_metin = $_POST["yorum_metin"];
+  $yorum_görünürlük = "0";
+  $yorum_film_ID = intval($_GET['id']);
+
+  $sorgu = $baglan->query("INSERT INTO yorum (yorum_kullanıcı, yorum_metin, yorum_görünürlük, yorum_film_ID) VALUES ('$yorum_kullanıcı', '$yorum_metin', '$yorum_görünürlük', '$yorum_film_ID')");
+
+  if ($sorgu) {
+    $yorum_durum = true;
+} else {
+    $yorum_durum = false;
+}
+
+ }
 
 
 if (isset($_GET['id'])) {
@@ -115,11 +130,50 @@ if (isset($_GET['id'])) {
     } else {
         echo "Film bulunamadı.";
     }
-  }
+    
 
 $baglan->close();
   ?>
  
+
+
+
+<section class="yorum-gonder">
+  <div class="form-alani">
+    <h3>Film hakkında görüşlerinizi bizimle paylaşın</h3>
+    <form action="" method="post" onsubmit="return validateForm()">
+      <div class="input-grubu">
+        <input type="text" id="yorum_kullanıcı" name="yorum_kullanıcı" placeholder="İsminiz" required>
+      </div>
+      <div class="input-grubu">
+        <textarea id="yorum_metin" name="yorum_metin" placeholder="Yorumunuz" required></textarea>
+      </div>
+      <button type="submit">Gönder</button>
+    </form>
+  </div>
+</section>
+
+
+<section class="yorumlar">
+  <h3>Yorumlar</h3>
+  <div class="yorum-listesi">
+    <?php
+    if ($sonuc2->num_rows > 0) {
+        while ($satir2 = $sonuc2->fetch_assoc()) {
+            echo "<div class='yorum'>";
+            echo "<strong>" . $satir2['yorum_kullanıcı'] . "</strong><br>";
+            echo "<p>" . ($satir2['yorum_metin']) . "</p>";
+            echo "</div>";
+        }
+    } else {
+        echo "<p>Henüz yorum yapılmamış.</p>";
+    }
+  }
+    ?>
+  </div>
+</section>
+
+
 </main>
 
 <footer>

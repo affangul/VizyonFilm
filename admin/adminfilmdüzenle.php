@@ -117,6 +117,7 @@ if (isset($_POST['film_guncelle'])) {
       <li><a href="adminhakkımızda.php">Hakkımızda</a></li>
       <li><a href="adminiletişim.php">İletişim</a></li>
       <li><a href="adminmesaj.php">Mesajlar</a></li>
+      <li><a href="adminyorumlar.php">Yorumlar</a></li>
       <li><a id="cıkıs" href="cikis.php" onclick="return confirm('Çıkış yapmak istediğinize emin misiniz?');">ÇIKIŞ</a></li>
     </ul>
   </div>

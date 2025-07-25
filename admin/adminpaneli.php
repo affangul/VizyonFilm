@@ -36,8 +36,8 @@ if ($_SESSION["giris"] != sha1(md5("var")) || $_COOKIE["kullanici"] != "msb"){
     <div class="a2"><a href="adminmesaj.php"><div class="kutu">Gelen mesajlar</div></a></div>
 </div>
 <div class="kutular">
-<div class="a1"><a href="cikis.php" onclick="return confirm('Çıkış yapmak istediğinize emin misiniz?');"><div class="çıkış">ÇIKIŞ</div></a></div>
-<div class="a2"></div>
+<div class="a1"><a href="adminyorumlar.php"><div class="kutu">Yorumlar</div></a></div>
+<div class="a2"><a href="cikis.php" onclick="return confirm('Çıkış yapmak istediğinize emin misiniz?');"><div class="çıkış">ÇIKIŞ</div></a></div>
 </div>
 </body>
 </html>

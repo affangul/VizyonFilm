@@ -124,6 +124,36 @@ main {
 }
 
 
+.yorumlar {
+  margin-top: 40px;
+  background-color: #444;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.yorumlar h3 {
+  color: #ffcc00;
+  margin-bottom: 20px;
+}
+
+.yorum-listesi .yorum {
+  background-color: #666;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+.yorum-listesi .yorum strong {
+  display: block;
+  color: #f1c40f;
+  margin-bottom: 5px;
+}
+
+.yorum-listesi .yorum p {
+  color: #fff;
+  margin: 0;
+}
+
   @media (max-width: 768px) {
     header {
       flex-direction: column;
